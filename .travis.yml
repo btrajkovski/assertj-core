@@ -1,6 +1,9 @@
 language: java
+script:
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn clean verify; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then mvn clean verify sonar:sonar; fi'
 
-sudo: required
+sudo: false
 
 addons:
   apt:
@@ -13,9 +16,6 @@ addons:
     branches:
       - master
       - local-ci-test
-
-script:
-  - sonar-scanner
 
 jdk:
   - oraclejdk8
