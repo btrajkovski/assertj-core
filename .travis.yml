@@ -3,7 +3,7 @@ script:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn clean verify; fi'
   - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then mvn clean verify sonar:sonar; fi'
 
-sudo: false
+sudo: required
 
 addons:
   apt:
